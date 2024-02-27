@@ -82,9 +82,7 @@ export class Ajedrez implements Ajedrez_juego{
   if (posN_bool === true && posB_bool ===true && posN_n === 1 && posB_n == 1) {
     return this.Attack(posN,posb)
    }
-  return false;
-
-
+    return false;
   }
   /**
    * Attack() devuelve si el caballo ataca al alfil.
