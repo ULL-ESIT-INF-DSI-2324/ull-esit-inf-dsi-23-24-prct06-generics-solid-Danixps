@@ -1,135 +1,46 @@
 import 'mocha';
 import {expect} from 'chai';
-import {Ajedrez}  from '../src/ejercicio-1-modi';
+import {Rational, Complex, ArithmeticableCollection}  from '../src/ejercicio-1-modi';
 
-describe('Misma fila', () => {
-    it('Misma fila', () => {
-        const tablero1 = new Ajedrez(
-            [
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','B','-','-', '-', '-', 'N', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              
-            
-            
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(true);
-    });
-  });
+describe('Racionales', () => {
+    it('operaciones con ellos', () => {
+      const racional = new Rational('1/2', '2/1');
 
-  describe('Misma col', () => {
-    it('Misma col', () => {
-        const tablero1 = new Ajedrez(
-            [
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', 'N', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', 'B', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              
-            
-            
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(true);
-    });
-  });
-  describe('Misma diagonal', () => {
-    it('Misma diagonal', () => {
-        const tablero1 = new Ajedrez(
-            [
-              ['N','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', 'B'],
-              
-            
-            
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(true);
-    });
-  });
-  describe('Misma diagonal', () => {
-    it('Misma diagonal', () => {
-        const tablero1 = new Ajedrez(
-            [
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','N','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', 'B', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              
-            
-            
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(true);
-    });
-  });
 
-  describe('Distinta diagonal', () => {
-    it('Distinta diagonal', () => {
-        const tablero1 = new Ajedrez(
-            [
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','N','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', 'B', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              
-            
-            
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(false);
-    });
-  });
+       
+      expect(racional.add()).to.be.equal('5/2');
+      expect(racional.substract()).to.be.equal('-3/2');
+      expect(racional.multiply()).to.be.equal('1/1');
+      expect(racional.divide()).to.be.equal('1/4');
 
-  describe('Mal dimensionamiento arrays', () => {
-    it('Devuelve undefined', () => {
-        const tablero1 = new Ajedrez(
-            [
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', 'N', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', '-', '-'],
-              ['-','-','-','-', '-', '-', 'B', '-'],       
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(undefined);
     });
-  });
+});
 
-  describe('Mal dimensionamiento tamaño de arrays', () => {
-    it('Devuelve undefined', () => {
-        const tablero1 = new Ajedrez(
-            [
-                ['-','-','-','-', '-', '-', '-', '-'],
-                ['-','-','-','-', '-', '-', 'N', '-'],
-                ['-','-','-','-', '-', '-', '-', '-'],
-                ['-','-','-','-', '-', '-', '-'],
-                ['-','-','-','-', '-', '-', '-', '-'],
-                ['-','-','-','-', '-', '-', 'B', '-'],
-                ['-','-','-','-', '-', '-', '-', '-'],
-                ['-','-','-','-', '-', '-', '-'],    
-        ]);
-      expect(tablero1.checkAtack()).to.be.equal(undefined);
-    });
-  });
 
-  
+
+describe('Complejo', () => {
+  it('Operaciones con ellos', () => {
+    const complejo = new Complex('1 2', '2 1');
+    
+     
+    expect(complejo.add()).to.be.equal('5 2i');
+    expect(complejo.substract()).to.be.equal('-3 2i');
+    expect(complejo.multiply()).to.be.equal('0 3i');
+    expect(complejo.divide()).to.be.equal('0 3i');
+
+  });
+});
+
+describe('Aritmethic Collection', () => {
+  it('Operaciones con ellos', () => {
+    const coleccion = new ArithmeticableCollection(['1', '1', '3']);
+    const complejo1 = new Complex('1 2', '2 1');
+   // const racional = new Rational('1/2', '2/1');
+   // coleccion.addArithmeticable(complejo1);
+    
+    
+    expect(coleccion.getNumberOfArithmeticables()).to.be.equal(3);
+    expect(coleccion.getItem(1)).to.be.equal('1');
+    coleccion.addArithmeticable('1');
+  });
+});

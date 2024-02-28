@@ -1,139 +1,232 @@
-//Nombre del archivo: ejercicio-1-modi.ts
-//Descripción: 
-//Autor: Daniel Bensa Expósito Paz
-//Github: https://github.com/Danixps
-//Correo Institucional: alu0101481876@ull.edu.es
-//Fecha: 21/02/2024
+// //Nombre del archivo: ejercicio-1-modi.ts
+// //Descripción: 
+// //Autor: Daniel Bensa Expósito Paz
+// //Github: https://github.com/Danixps
+// //Correo Institucional: alu0101481876@ull.edu.es
+// //Fecha: 21/02/2024
 
-type caracteres = '-' | 'B' | 'N';
-type tablero =  caracteres[][];
+type numeros = string;
 
 /**
- * La interfaz Ajedrez_juego representa un juego de ajedrez con un tablero.
- * 
- * @param juego Tablero de ajedrez
+ * Arithmeticable es una interfaz recibe un número entero y un array de números y devuelve la suma de los múltiplos de los números del array hasta el número entero
+ * @param T[]
+ * * ```typescript
+ * ```
  */
-interface Ajedrez_juego {
-  juego: tablero;
+interface Arithmeticable<T> {
+  add(valor1: T, valor2: T): string;
+  substract(valor1: T, valor2: T): string;
+  multiply(valor1: T, valor2: T): string;
+  divide(valor1: T, valor2: T): string;
+
 }
 
+
 /**
- * La clase Ajedrez representa un juego de ajedrez con un tablero.
- * 
- * @param juego Tablero de ajedrez
+ * ArithmeticableCollection recibe un número entero y un array de números y devuelve la suma de los múltiplos de los números del array hasta el número entero
+ * @param T[]
+ * * ```typescript
+ * ```
  */
-export class Ajedrez implements Ajedrez_juego{
-  constructor(public juego :tablero) {}
+export class ArithmeticableCollection<T extends string> implements Arithmeticable<T> {
+  constructor(private arithmetica: T[]) {
+  }
+
+  add(valor2: T, valor3: T) {
+    return valor2 + valor3;
+  }
+
+  multiply(valor2: T, valor3: T) {
+    return valor2 + valor3;
+  }
   
-  /**
-   * checkAtack() devuelve si el caballo ataca al alfil.
-   * 
-   * @returns true o false dependiendo si el rey ataca a la reina
-   * ```typescript
-   * const tablero1 = new Ajedrez(
-   * [
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','B','-','-', '-', '-', 'N', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ]);
-   * 
-   * console.log(tablero1.checkAtack()); // true
-   * ```
-   * */
-  public checkAtack() : boolean | undefined {
-  if (this.juego.length !== 8 ) {
-    return undefined;
+  substract(valor2: T, valor3: T) {
+    return valor2 + valor3;
   }
-  const array_juego = this.juego; 
-  let posN :number[] = [0,0];
-  let posN_bool :boolean = false;
-  let posB_bool :boolean =  false;
-  let posN_n :number = 0;
-  let posB_n :number = 0;
 
-
-
-  let posb : number[] = [0,0] ;
-
-  for (let i = 0; i < array_juego.length; i++) {
-    for (let j = 0; j < array_juego[i].length; j++) {
-      if (array_juego[i].length !== 8) {
-        return undefined;
-      }
-      if (array_juego[i][j] === 'B') {
-        posb = [i,j];
-        posB_bool = true;
-        posB_n++;
-
-
-      } if (array_juego[i][j] === 'N') {
-         posN  = [i,j];
-         posN_bool = true;
-        posN_n++;
-      }
-
-    }
+  divide(valor2: T, valor3: T) {
+    return valor2 + valor3;
   }
-  if (posN_bool === true && posB_bool ===true && posN_n === 1 && posB_n == 1) {
-    return this.Attack(posN,posb)
-   }
-    return false;
-  }
-  /**
-   * Attack() devuelve si el caballo ataca al alfil.
-   * 
-   * @param posN Posición del caballo
-   * @param posb Posición del alfil
-   * @returns true o false dependiendo si el rey ataca a la reina
-   * ```typescript
-   * const tablero1 = new Ajedrez(
-   * [
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','B','-','-', '-', '-', 'N', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ['-','-','-','-', '-', '-', '-', '-'],
-   * ]);
-   *  
-   * console.log(tablero1.Attack([1,6],[1,1])); // true
-   * ```
-   */
-  public Attack(posN :number[], posb : number[] ) : boolean{
-    if (posN[1] == posb[1] || posN[0] == posb[0]) {
-      return true
-    }
-    if (posN[1] - posb[1] === posN[0] - posb[0]) {
-      return true
-    }
-    else {
-      return false;
-    }
 
+  addArithmeticable(newAritmetic: T){
+    this.arithmetica.push(newAritmetic);
+    
+  }
+  getItem(index: number) {
+    return this.arithmetica[index];
+  }
+
+  getNumberOfArithmeticables(){
+    return this.arithmetica.length
   }
 }
 
-const tablero1 = new Ajedrez(
-[
-  ['-','-','-','-', '-', '-', '-', '-'],
-  ['-','B','-','-', '-', '-', 'N', '-'],
-  ['-','-','-','-', '-', '-', '-', '-'],
-  ['-','-','-','-', '-', '-', '-', '-'],
-  ['-','-','-','-', '-', '-', '-', '-'],
-  ['-','-','-','-', '-', '-', '-', '-'],
-  ['-','-','-','-', '-', '-', '-', '-'],
-  ['-','-','-','-', '-', '-', '-', '-'],
-  
 
 
-]);
+/**
+ * Rational recibe un número entero y un array de números y devuelve la suma de los múltiplos de los números del array hasta el número entero
+ * @param racional1
+ * @param racional2
+ * 
+ * * ```typescript
+ * ```
+ */
+export class Rational<T extends numeros> implements Arithmeticable<T> {
+  constructor(protected racional1: T , protected racional2: T) {
+  }
 
-console.log(tablero1.checkAtack());
+  mcd(numerador: number, denominador: number): number {
+    let a = Math.abs(numerador);
+    let b = Math.abs(denominador);
+    while (b) {
+      const t = b;
+      b = a % b;
+      a = t;
+    }
+    return a;
+  }
+
+  getNumerador_Denominador(racional: T): number[] {
+    const numerador = parseInt(racional.split('/')[0]);
+    const denominador = parseInt(racional.split('/')[1]);
+    return [numerador, denominador];
+ }
+
+  add(){
+
+    let [numerador1, denominador1] = this.getNumerador_Denominador(this.racional1);
+    let [numerador2, denominador2] = this.getNumerador_Denominador(this.racional2);
+    const denominador_comun = denominador1 * denominador2;
+     numerador1 = numerador1 * denominador2;
+     numerador2 = numerador2 * denominador1;
+     const numerador = numerador1 + numerador2;
+     const minimo_comun_divisor = this.mcd(numerador, denominador_comun);
+    return numerador / minimo_comun_divisor + '/' + denominador_comun / minimo_comun_divisor;
+
+  }
+
+  substract() {
+       let [numerador1, denominador1] = this.getNumerador_Denominador(this.racional1);
+       let [numerador2, denominador2] = this.getNumerador_Denominador(this.racional2);
+       const denominador_comun = denominador1 * denominador2;
+       numerador1 = numerador1 * denominador2;
+       numerador2 = numerador2 * denominador1;
+       const numerador = numerador1 - numerador2;
+       const minimo_comun_divisor = this.mcd(numerador, denominador_comun);
+       return numerador / minimo_comun_divisor + '/' + denominador_comun / minimo_comun_divisor;
+  }
+
+  multiply() {
+      const [numerador1, denominador1] = this.getNumerador_Denominador(this.racional1);
+      const [numerador2, denominador2] = this.getNumerador_Denominador(this.racional2);
+      const numerador = numerador1 * numerador2;
+      const denominador = denominador1 * denominador2;
+      const minimo_comun_divisor = this.mcd(numerador, denominador);
+      return numerador / minimo_comun_divisor + '/' + denominador / minimo_comun_divisor;
+    }
+
+  divide() {
+        const [numerador1, denominador1] = this.getNumerador_Denominador(this.racional1);
+        const [numerador2, denominador2] = this.getNumerador_Denominador(this.racional2);
+        const numerador = numerador1 * denominador2;
+        const denominador = denominador1 * numerador2;
+        const minimo_comun_divisor = this.mcd(numerador, denominador);
+        return numerador / minimo_comun_divisor + '/' + denominador / minimo_comun_divisor;
+      }
+
+}
+
+/**
+ * Complex recibe un número entero y un array de números y devuelve la suma de los múltiplos de los números del array hasta el número entero
+ * @param complejo1
+ * @param complejo2
+ * 
+ * * ```typescript
+ * ```
+ */
+export class Complex<T extends numeros> implements Arithmeticable<T> {
+  constructor(protected racional1: T , protected racional2: T) {
+  }
+
+  mcd(numerador: number, denominador: number): number {
+    let a = Math.abs(numerador);
+    let b = Math.abs(denominador);
+    while (b) {
+      const t = b;
+      b = a % b;
+      a = t;
+    }
+    return a;
+  }
+
+  getNumerador_Denominador(racional: T): number[] {
+    const numerador = parseInt(racional.split(' ')[0]);
+    const denominador = parseInt(racional.split(' ')[1]);
+    return [numerador, denominador];
+ }
+
+  add(){
+
+    let [numerador1, denominador1] = this.getNumerador_Denominador(this.racional1);
+    let [numerador2, denominador2] = this.getNumerador_Denominador(this.racional2);
+    const denominador_comun = denominador1 * denominador2;
+     numerador1 = numerador1 * denominador2;
+     numerador2 = numerador2 * denominador1;
+     const numerador = numerador1 + numerador2;
+     const minimo_comun_divisor = this.mcd(numerador, denominador_comun);
+    return numerador / minimo_comun_divisor + ' ' + denominador_comun / minimo_comun_divisor + 'i' ;
+
+  }
+
+  substract() {
+       let [numerador1, denominador1] = this.getNumerador_Denominador(this.racional1);
+       let [numerador2, denominador2] = this.getNumerador_Denominador(this.racional2);
+       const denominador_comun = denominador1 * denominador2;
+       numerador1 = numerador1 * denominador2;
+       numerador2 = numerador2 * denominador1;
+       const numerador = numerador1 - numerador2;
+       const minimo_comun_divisor = this.mcd(numerador, denominador_comun);
+       return numerador / minimo_comun_divisor + ' ' + denominador_comun / minimo_comun_divisor + 'i' ;
+  }
+
+  multiply() {
+      const [r1, im1] = this.getNumerador_Denominador(this.racional1);
+      const [r2, im2] = this.getNumerador_Denominador(this.racional2);
+      const real = r1 * r2
+      const imaginaria = im1 * im2;
+      const parte_real = real - imaginaria;
+      const real2 = r1 * im2;
+      const imaginaria2 = im1 * im2;
+      const parte_imaginaria = real2 + imaginaria2;
+
+      return parte_real + ' ' +  parte_imaginaria + 'i';
+    }
+
+  divide() {
+    const [r1, im1] = this.getNumerador_Denominador(this.racional1);
+    const [r2, im2] = this.getNumerador_Denominador(this.racional2);
+    const real = r1 * r2
+    const imaginaria = im1 * im2;
+    const parte_real = real - imaginaria;
+    const real2 = r1 * im2;
+    const imaginaria2 = im1 * im2;
+    const parte_imaginaria = real2 + imaginaria2;
+
+    return parte_real + ' ' +  parte_imaginaria + 'i';
+    }
+
+}
+const racional = new Rational('1/2', '2/1');
+const complejo = new Complex('1 2', '2 1');
+
+console.log(racional.add());
+console.log(racional.multiply());
+console.log(racional.divide());
+console.log(racional.substract());
+console.log(complejo.add());
+ 
+const coleccion = new ArithmeticableCollection(['1', '1', '3']);
+// const dato: T = '2';
+console.log(coleccion.getNumberOfArithmeticables());
+console.log(coleccion.getItem(1));
 
