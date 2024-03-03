@@ -2,7 +2,7 @@ import 'mocha';
 import {expect} from 'chai';
 import {Rational, Complex, ArithmeticableCollection}  from '../src/ejercicio-1-modi';
 
-describe('Racionales', () => {
+describe('Ejercicio-1-modi. Racionales', () => {
     it('operaciones con ellos', () => {
       const racional = new Rational('1/2', '2/1');
 
@@ -18,7 +18,7 @@ describe('Racionales', () => {
 
 
 
-describe('Complejo', () => {
+describe('Ejercicio-1-modi. Complejo', () => {
   it('Operaciones con ellos', () => {
     const complejo = new Complex('1 2', '2 1');
     
@@ -31,10 +31,9 @@ describe('Complejo', () => {
   });
 });
 
-describe('Aritmethic Collection', () => {
+describe('Ejercicio-1-modi. Aritmethic Collection', () => {
   it('Operaciones con ellos', () => {
     const coleccion = new ArithmeticableCollection(['1', '1', '3']);
-    const complejo1 = new Complex('1 2', '2 1');
    // const racional = new Rational('1/2', '2/1');
    // coleccion.addArithmeticable(complejo1);
     

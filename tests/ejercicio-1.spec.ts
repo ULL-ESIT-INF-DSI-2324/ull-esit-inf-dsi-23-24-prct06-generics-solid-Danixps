@@ -1,8 +1,8 @@
 import 'mocha';
 import {expect} from 'chai';
-import {Item, Box, Furniture, Clothing} from '../src/ejercicio-1';
+import {Box, Furniture, Clothing} from '../src/ejercicio-1';
 
-describe('Creacion de cajas', () => {
+describe('Ejercicio-1. Creacion de cajas', () => {
     it('Creación de cajas con muebles y ropas', () => {
       
         const box = new Box<Furniture | Clothing>([new Furniture('Chair Kitchen', 180), new Clothing('Shirt Nike', 100)]);
@@ -19,7 +19,7 @@ describe('Creacion de cajas', () => {
     });
 });
 
-describe('Añadir y eliminar items', () => {
+describe('Ejercicio-1. Añadir y eliminar items', () => {
     it('Añadir y eliminar items', () => {
         const silla = new Furniture('Chair Kitchen', 180);
         const camisa_nike = new Clothing('Shirt Nike', 100);
@@ -48,7 +48,7 @@ describe('Añadir y eliminar items', () => {
     });
 });
 
-describe('Buscar items', () => {
+describe('Ejercicio-1. Buscar items', () => {
     it('Buscar items', () => {
         const silla = new Furniture('Chair Kitchen', 180);
         const camisa_nike = new Clothing('Shirt Nike', 100);
@@ -70,7 +70,7 @@ describe('Buscar items', () => {
     });
 });
 
-describe('Ordenar items', () => {
+describe('Ejercicio-1. Ordenar items', () => {
     it('Ordenar items', () => {
         const silla = new Furniture('Chair Kitchen', 180);
         const camisa_nike = new Clothing('Shirt Nike', 100);
